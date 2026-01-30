@@ -1,0 +1,9 @@
+temps binari petit amb buffer 16 bytes: 0m0.063s
+64 bytes: 0m0.087s
+128: 0m0.069s
+1024: 0m0.085s
+
+temps binari gran 16 bytes: 0m0.097s
+64 bytes: 0m0.099s
+128 bytes: 0m0.056s
+1024 bytes: 0m0.068s

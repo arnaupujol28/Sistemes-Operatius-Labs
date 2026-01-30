@@ -16,7 +16,7 @@ int main (int argc, char* argv[]){
     if(strcmp(argv[1] , "text")== 0){
        
         //processar text
-        return 0;
+        
     }
 
     else{
