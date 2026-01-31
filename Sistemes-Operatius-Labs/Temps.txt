@@ -1,9 +1,127 @@
-temps binari petit amb buffer 16 bytes: 0m0.063s
+temps binari petit amb buffer:
+16 bytes: 0m0.063s
 64 bytes: 0m0.087s
 128: 0m0.069s
 1024: 0m0.085s
 
-temps binari gran 16 bytes: 0m0.097s
+temps binari gran amb buffer:
+16 bytes: 0m0.097s
 64 bytes: 0m0.099s
 128 bytes: 0m0.056s
 1024 bytes: 0m0.068s
+
+temps text petit amb buffer:
+16 bytes: 0m0.007s
+64 bytes: 0m0.004s
+128 bytes: 0m0.004s
+1024 bytes: 0m0.004s
+
+temps text gran amb buffer:
+16 bytes: 0m0.036s
+64 bytes: 0m0.016s
+128 bytes: 0m0.009s
+1024 bytes: 0m0.006s
+
+u252258@DESKTOP-BBPNJI2:~/Sistemes-Operatius-Labs$ ls
+README.md  Sistemes-Operatius-Labs
+u252258@DESKTOP-BBPNJI2:~/Sistemes-Operatius-Labs$ cd Sistemes-Operatius-Labs
+u252258@DESKTOP-BBPNJI2:~/Sistemes-Operatius-Labs/Sistemes-Operatius-Labs$ ls
+Data  Temps.txt  circularBuffer.c  circularBuffer.h  main  main.c  main_1
+u252258@DESKTOP-BBPNJI2:~/Sistemes-Operatius-Labs/Sistemes-Operatius-Labs$ gcc main.c circularBuffer.c -o main1
+u252258@DESKTOP-BBPNJI2:~/Sistemes-Operatius-Labs/Sistemes-Operatius-Labs$ time ./main1 binary Data/test_small.dat 16
+the sum is -338294879
+
+real    0m0.005s
+user    0m0.000s
+sys     0m0.003s
+u252258@DESKTOP-BBPNJI2:~/Sistemes-Operatius-Labs/Sistemes-Operatius-Labs$ time ./main1 binary Data/test_small.dat 64
+the sum is -338294879
+
+real    0m0.004s
+user    0m0.004s
+sys     0m0.000s
+u252258@DESKTOP-BBPNJI2:~/Sistemes-Operatius-Labs/Sistemes-Operatius-Labs$ time ./main1 binary Data/test_small.dat 128
+the sum is -338294879
+
+real    0m0.005s
+user    0m0.005s
+sys     0m0.000s
+u252258@DESKTOP-BBPNJI2:~/Sistemes-Operatius-Labs/Sistemes-Operatius-Labs$ time ./main1 binary Data/test_small.dat 1024
+the sum is -338294879
+
+real    0m0.006s
+user    0m0.004s
+sys     0m0.001s
+u252258@DESKTOP-BBPNJI2:~/Sistemes-Operatius-Labs/Sistemes-Operatius-Labs$ time ./main1 binary Data/test_big.dat 16
+the sum is 575997520
+
+real    0m0.005s
+user    0m0.000s
+sys     0m0.003s
+u252258@DESKTOP-BBPNJI2:~/Sistemes-Operatius-Labs/Sistemes-Operatius-Labs$ time ./main1 binary Data/test_big.dat 64
+the sum is 575997520
+
+real    0m0.004s
+user    0m0.004s
+sys     0m0.001s
+u252258@DESKTOP-BBPNJI2:~/Sistemes-Operatius-Labs/Sistemes-Operatius-Labs$ time ./main1 binary Data/test_big.dat 128
+the sum is 575997520
+
+real    0m0.004s
+user    0m0.000s
+sys     0m0.001s
+u252258@DESKTOP-BBPNJI2:~/Sistemes-Operatius-Labs/Sistemes-Operatius-Labs$ time ./main1 binary Data/test_big.dat 1024
+the sum is 575997520
+
+real    0m0.005s
+user    0m0.004s
+sys     0m0.001s
+u252258@DESKTOP-BBPNJI2:~/Sistemes-Operatius-Labs/Sistemes-Operatius-Labs$ 
+u252258@DESKTOP-BBPNJI2:~/Sistemes-Operatius-Labs/Sistemes-Operatius-Labs$ time ./main1 binary Data/int_text_small.txt 16
+the sum is 234556176
+
+real    0m0.005s
+user    0m0.002s
+sys     0m0.004s
+u252258@DESKTOP-BBPNJI2:~/Sistemes-Operatius-Labs/Sistemes-Operatius-Labs$ time ./main1 binary Data/int_text_small.txt 64
+the sum is 234556176
+
+real    0m0.004s
+user    0m0.003s
+sys     0m0.001s
+u252258@DESKTOP-BBPNJI2:~/Sistemes-Operatius-Labs/Sistemes-Operatius-Labs$ time ./main1 binary Data/int_text_small.txt 128
+the sum is 234556176
+
+real    0m0.004s
+user    0m0.002s
+sys     0m0.001s
+u252258@DESKTOP-BBPNJI2:~/Sistemes-Operatius-Labs/Sistemes-Operatius-Labs$ time ./main1 binary Data/int_text_small.txt 1024
+the sum is 234556176
+
+real    0m0.004s
+user    0m0.000s
+sys     0m0.001s
+u252258@DESKTOP-BBPNJI2:~/Sistemes-Operatius-Labs/Sistemes-Operatius-Labs$ time ./main1 binary Data/int_text_big.txt 16
+the sum is 474383028
+
+real    0m0.033s
+user    0m0.003s
+sys     0m0.029s
+u252258@DESKTOP-BBPNJI2:~/Sistemes-Operatius-Labs/Sistemes-Operatius-Labs$ time ./main1 binary Data/int_text_big.txt 64
+the sum is 474383028
+
+real    0m0.011s
+user    0m0.003s
+sys     0m0.002s
+u252258@DESKTOP-BBPNJI2:~/Sistemes-Operatius-Labs/Sistemes-Operatius-Labs$ time ./main1 binary Data/int_text_big.txt 128
+the sum is 474383028
+
+real    0m0.009s
+user    0m0.002s
+sys     0m0.007s
+u252258@DESKTOP-BBPNJI2:~/Sistemes-Operatius-Labs/Sistemes-Operatius-Labs$ time ./main1 binary Data/int_text_big.txt 1024
+the sum is 474383028
+
+real    0m0.006s
+user    0m0.003s
+sys     0m0.000s

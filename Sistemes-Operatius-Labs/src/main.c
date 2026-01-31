@@ -6,21 +6,28 @@
 #include <unistd.h>
 #include "circularBuffer.h"
 
+static void safe_write(int fd, const char *buf, size_t len) {
+    ssize_t r = write(fd, buf, len);
+    (void)r;
+}
+
 int main (int argc, char* argv[]){
 
+    
     //comprovar error
     if (argc != 4) {
-        write(2, "Us: ./myprogram binary|text path buffersize\n", 40);
+        safe_write(2, "Us: ./myprogram binary|text path buffersize\n", 40);
         return 1;
     }
 
     
     int bytes = atoi(argv[3]);// convertir argv[3] a int ??
     int bytes_usables = bytes - (bytes%sizeof(int));
+
     
     int fd = open(argv[2], O_RDONLY, 0644);
     if (fd<0){//error
-        write(2, "Error en obrir l'arxiu", strlen("Error en obrir l'arxiu"));
+        safe_write(2, "Error en llegir l'arxiu", strlen("Error en llegir l'arxiu"));
         return 1;
     }
     int sum = 0;
@@ -41,7 +48,7 @@ int main (int argc, char* argv[]){
             n = read(fd, tmp, bytes);
             if (n == 0) eof = 1;
             if (n<0){//error
-                write(2, "Error en llegir l'arxiu", strlen("Error en llegir l'arxiu"));
+                safe_write(2, "Error en llegir l'arxiu", strlen("Error en llegir l'arxiu"));
                 return 1;
             }
 
@@ -106,13 +113,14 @@ int main (int argc, char* argv[]){
 
         char suma[100];
         sprintf(suma, "the sum is %d\n", sum);
-        write(1,suma, strlen(suma));
+        safe_write(1,suma, strlen(suma));
         return 0;    
+        close(fd);
 
         
     }
 
-    else{
+    else if (strcmp(argv[1], "binary") == 0){
 
         char buffer[bytes_usables]; // de quina mida s ha de crear?
         int n;
@@ -129,9 +137,13 @@ int main (int argc, char* argv[]){
         }
         char suma[100];
         sprintf(suma, "the sum is %d\n", sum);
-        write(1,suma, strlen(suma));
+        safe_write(1,suma, strlen(suma));
         return 0;
+        close(fd);
 
-
+    }
+    else{
+        safe_write(2, "Format incorrecte\n", 18);
+        return 1;
     }
 }
